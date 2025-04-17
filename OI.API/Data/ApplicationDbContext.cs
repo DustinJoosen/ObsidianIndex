@@ -33,7 +33,7 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<Media> Media { get; set; }
-    public DbSet<Media> Tags { get; set; }
+    public DbSet<Tag> Tags { get; set; }
     public DbSet<MediaTag> MediaTags { get; set; }
 }
 

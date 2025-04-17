@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OI.API.Exchange;
+using OI.API.Exchange.DTOS;
 using OI.API.Services.Abstractions;
 
 namespace OI.API.Controllers;
@@ -8,15 +10,32 @@ namespace OI.API.Controllers;
 public class MediaController : ControllerBase
 {
 
-    private IMediaService _mediaService;
+    private readonly IMediaService _mediaService;
     public MediaController(IMediaService mediaService)
     {
         this._mediaService = mediaService;
     }
 
     [HttpGet]
-    [Route("media/{mediaId:Guid}")]
-    public async Task<IActionResult> GetMedia([FromRoute] Guid mediaId)
+    [Route("")]
+    public async Task<GetMediaResponse> GetAll() =>
+        await this._mediaService.GetAll();
+
+
+    [HttpGet]
+    [Route("{mediaId:Guid}")]
+    public async Task<ActionResult<MediaDTO>> GetById([FromRoute] Guid mediaId)
+    {
+        var media = await this._mediaService.GetById(mediaId);
+        return media != null
+            ? Ok(media)
+            : NotFound("Could not find media");
+    }
+
+
+    [HttpGet]
+    [Route("{mediaId:Guid}/stream")]
+    public async Task<IActionResult> GetMediaStream([FromRoute] Guid mediaId)
     {
         var streamContent = await this._mediaService.GetMediaStream(mediaId);
         if (streamContent == null)
