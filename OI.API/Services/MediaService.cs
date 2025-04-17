@@ -137,7 +137,7 @@ public class MediaService : IMediaService
             media.Description,
             media.FileSizeInKb,
             media.Dimensions,
-            media.DateAdded,
+            media.DateAdded.ToString("dd/MM/yyyy"),
             media.MediaTags.Select(mt => this.MapTagToTagDTO(mt.Tag)).ToList()
         );
     }

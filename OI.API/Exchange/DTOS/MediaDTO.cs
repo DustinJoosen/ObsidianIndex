@@ -9,5 +9,5 @@ public record MediaDTO(
     string? Description,
     long? FileSizeInKb,
     string? Dimensions,
-    DateTime DateAdded,
+    string DateAdded,
     ICollection<TagDTO> Tags);

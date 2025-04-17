@@ -4,5 +4,5 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OI.API.Exchange;
 
-public record GetMediaResponse(List<MediaDTO> media);
+public record GetMediaResponse(List<MediaDTO> Media);
 

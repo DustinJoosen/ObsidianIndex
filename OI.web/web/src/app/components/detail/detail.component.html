@@ -1,0 +1,24 @@
+
+<div id="oi-detail">
+  <div class="oi-detail-media-holder" id="oi-detail-media-holder-left">
+    <img id="oi-detail-media-holder-image" src="https://localhost:7420/media/{{ this.mediaData?.mediaId }}/stream" alt="">
+    <div id="oi-detail-media-holder-info" *ngIf="this.mediaData">
+      <p> Guid: {{ this.mediaData.mediaId }}</p>
+      <p> File type: {{ this.mediaData.fileTypeExtension }}
+      </p>
+      <p *ngIf="mediaData.dimensions">
+        <span *ngIf="mediaData.dimensions">{{ this.mediaData.dimensions }}</span>
+        <span *ngIf="mediaData.fileSizeInKb">({{ this.mediaData.fileSizeInKb}} KB)</span>
+      </p>
+      <p> Date added: {{ this.mediaData.dateAdded }}</p>
+    </div>
+  </div>
+  <div class="oi-detail-media-holder">
+    <p>
+      trentjkerntjkern;lwer elnxhrwr
+      some shit here
+      relemtkerlwtn;ler
+    </p>
+  </div>
+</div>
+

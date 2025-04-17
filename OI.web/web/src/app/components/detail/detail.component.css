@@ -1,0 +1,31 @@
+
+#oi-detail {
+  height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: space-between;
+  /*align-items: center;*/
+}
+
+.oi-detail-media-holder {
+  width: 400px;
+  margin: 180px 0 0;
+}
+
+#oi-detail-media-holder-left {
+  margin-left: 40px;
+}
+
+#oi-detail-media-holder-image {
+  width: 400px;
+  height: auto;
+  border: 1px solid #333;
+  box-shadow: 3px 6px 10px #666666;
+}
+
+#oi-detail-media-holder-info {
+  margin-top: 15px;
+}
+#oi-detail-media-holder-info p {
+  margin: 0;
+}
