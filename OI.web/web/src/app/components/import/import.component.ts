@@ -20,6 +20,8 @@ export class ImportComponent {
 
   public progress: number = 0;
 
+  public importingRightNow = false;
+
   constructor(private apiService: ApiService) {
   }
 
@@ -54,6 +56,11 @@ export class ImportComponent {
   }
 
   async import() {
+    if (this.importingRightNow) {
+      return;
+    }
+
+    this.importingRightNow = true;
     const batchSize = 10;
 
     for (let i = 0; i < this.getSelectedFiles().length; i += batchSize) {
@@ -65,5 +72,7 @@ export class ImportComponent {
     console.log("Import complete");
     this.files = [];
     this.progress = 0;
+
+    this.importingRightNow = false;
   }
 }

@@ -1,6 +1,14 @@
-<input type="file" webkitdirectory multiple (change)="onFilesSelected($event)" />
 
-<div *ngIf="this.files.length != 0">
+<div id="oi-import-control" *ngIf="!importingRightNow">
+  <input
+    type="file"
+    webkitdirectory
+    multiple
+    (change)="onFilesSelected($event)" />
+  <button (click)="import()" *ngIf="this.getSelectedFiles().length != 0">Import all</button>
+</div>
+
+<div id="oi-import-images" *ngIf="this.files.length != 0">
   <app-selectable-media-item
     *ngFor="let file of this.files"
     [media]="file.file"
@@ -8,7 +16,7 @@
   ></app-selectable-media-item>
 </div>
 
-<button (click)="import()">Import all</button>
-
-<p>{{ this.progress }} / {{ this.getSelectedFiles().length }}</p>
-<progress min="0" max="{{this.getSelectedFiles().length }}" [value]="this.progress"></progress>
+<div id="oi-import-progress" *ngIf="this.getSelectedFiles().length != 0">
+  <p>{{ this.progress }} / {{ this.getSelectedFiles().length }}</p>
+  <progress min="0" max="{{this.getSelectedFiles().length }}" [value]="this.progress"></progress>
+</div>
