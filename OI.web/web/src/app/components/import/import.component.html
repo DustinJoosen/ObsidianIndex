@@ -1,0 +1,14 @@
+<input type="file" webkitdirectory multiple (change)="onFilesSelected($event)" />
+
+<div *ngIf="this.files.length != 0">
+  <app-selectable-media-item
+    *ngFor="let file of this.files"
+    [media]="file.file"
+    (onChangeSelection)="this.onChangeSelection($event, file)"
+  ></app-selectable-media-item>
+</div>
+
+<button (click)="import()">Import all</button>
+
+<p>{{ this.progress }} / {{ this.getSelectedFiles().length }}</p>
+<progress min="0" max="{{this.getSelectedFiles().length }}" [value]="this.progress"></progress>

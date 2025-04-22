@@ -1,0 +1,21 @@
+
+<div class="selectable-media-item-holder" (click)="toggleSelected()">
+  <div class="selectable-media-item-holder-indicator" [class.selected]="this.selected">
+    ×
+  </div>
+  <div *ngIf="isImage(this.media)" class="selectable-media-item-holder-image">
+    <img [src]="this.previewUrl" [alt]="this.media.name">
+  </div>
+  <div *ngIf="isVideo(this.media)" class="selectable-media-item-holder-video">
+    <p class="selectable-media-item-holder-video-icon">🎞️</p>
+    <p>{{ this.media.name }}</p>
+  </div>
+  <div *ngIf="isPdf(this.media)" class="selectable-media-item-holder-pdf">
+    <p class="selectable-media-item-holder-pdf-icon">📄</p>
+    <p>{{ this.media.name }}</p>
+  </div>
+  <div *ngIf="isOther(this.media)" class="selectable-media-item-holder-file">
+    <p class="selectable-media-item-holder-file-icon">📁</p>
+    <p>{{ this.media.name }}</p>
+  </div>
+</div>

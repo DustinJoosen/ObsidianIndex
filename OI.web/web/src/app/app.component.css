@@ -2,9 +2,9 @@
 #oi-header-logo {
   font-family: "RocknRoll One", serif;
   width: 200px;
-  position: absolute;
+  position: relative;
   left: 20px;
-  margin: 15px;
+  margin: 15px 15px 40px;
 }
 
 #oi-header-logo #oi-header-logo-l1 {

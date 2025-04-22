@@ -19,7 +19,7 @@ public class MediaController : ControllerBase
     [HttpGet]
     [Route("")]
     public async Task<GetMediaResponse> GetAll() =>
-        await this._mediaService.GetAll();
+        await this._mediaService.GetAll(1000);
 
 
     [HttpGet]
@@ -58,5 +58,20 @@ public class MediaController : ControllerBase
             return BadRequest("Could not import media");
 
         return Ok(newMediaId);
+    }
+
+    [HttpPost]
+    [Route("import/batch")]
+    public async Task<IActionResult> ImportMediaBatch(List<IFormFile> files)
+    {
+        if (files == null || files.Count == 0)
+            return BadRequest("No files attached");
+
+        foreach (var file in files)
+        {
+            await this._mediaService.ImportMedia(file);
+        }
+
+        return Ok();
     }
 }
